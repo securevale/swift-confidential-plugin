@@ -1,0 +1,14 @@
+### macOS ###
+
+.DS_Store
+
+### SwiftPM ###
+
+/.build
+/Packages
+/.swiftpm
+
+### Xcode ###
+
+/*.xcodeproj
+xcuserdata/
