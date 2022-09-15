@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "swift-confidential-plugin",
     platforms: [
-        .macOS(.v10_15),
+        .macOS(.v10_15)
     ],
     products: [
         .plugin(

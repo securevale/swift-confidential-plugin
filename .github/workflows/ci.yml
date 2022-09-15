@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '.gitignore'
+      - 'CODE_OF_CONDUCT.md'
+      - 'LICENSE'
+      - 'README.md'
+  pull_request:
+    branches-ignore:
+      - 'bugfix/**'
+      - 'feature/**'
+      - 'topic/**'
+    paths-ignore:
+      - '.gitignore'
+      - 'CODE_OF_CONDUCT.md'
+      - 'LICENSE'
+      - 'README.md'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: macos-12
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Lint Swift Code
+        run: swiftlint lint --strict --reporter github-actions-logging
+
+  dependencies:
+    name: Dependencies
+    runs-on: macos-12
+    env:
+      DEVELOPER_DIR: "/Applications/Xcode_14.0.app/Contents/Developer"
+
+    steps:
+      - name: Runner Overview
+        run: system_profiler SPHardwareDataType SPSoftwareDataType SPDeveloperToolsDataType
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Resolve Package Dependencies
+        run: swift package resolve -v
