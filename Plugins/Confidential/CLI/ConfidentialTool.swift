@@ -2,7 +2,7 @@ import PackagePlugin
 
 enum ConfidentialTool {
 
-    static func instance(for context: PluginContext) throws -> PluginContext.Tool {
+    static func instance(for context: Context) throws -> ExecutableTool {
         try context.tool(named: "confidential")
     }
 }

@@ -1,19 +1,17 @@
 import Foundation
-import PackagePlugin
 
-extension SourceModuleTarget {
+extension FileManager {
 
-    func files(where predicate: (Path) -> Bool) -> [Path] {
-        let targetURL = URL(fileURLWithPath: directory.string, isDirectory: true)
+    func enumerateFiles(at directoryURL: URL) -> some Collection<URL> {
         let resourceKeys: Set<URLResourceKey> = [.isDirectoryKey]
         guard
-            let enumerator = FileManager.default.enumerator(
-                at: targetURL,
+            let enumerator = enumerator(
+                at: directoryURL,
                 includingPropertiesForKeys: .init(resourceKeys),
                 options: [.skipsPackageDescendants]
             )
         else {
-            return []
+            return [URL]()
         }
 
         return enumerator
@@ -25,7 +23,5 @@ extension SourceModuleTarget {
 
                 return resourceValues.isDirectory == false
             }
-            .map { Path($0.path) }
-            .filter(predicate)
     }
 }
