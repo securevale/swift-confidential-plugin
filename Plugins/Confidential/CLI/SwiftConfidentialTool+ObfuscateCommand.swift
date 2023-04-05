@@ -1,6 +1,6 @@
 import PackagePlugin
 
-extension ConfidentialTool {
+extension SwiftConfidentialTool {
 
     struct ObfuscateCommand: Equatable {
 

@@ -80,10 +80,10 @@ extension Confidential: XcodeBuildToolPlugin {
 private extension Confidential {
 
     func createBuildCommands(context: Context, configurationFile: Path) throws -> [Command] {
-        let confidentialTool = try ConfidentialTool.instance(for: context)
+        let confidentialTool = try SwiftConfidentialTool.instance(for: context)
         let outputDir = context.pluginWorkDirectory.appending(C.GeneratedSources.directoryName)
         let outputFile = outputDir.appending(C.GeneratedSources.outputFileName)
-        let obfuscateCommand = ConfidentialTool.ObfuscateCommand(
+        let obfuscateCommand = SwiftConfidentialTool.ObfuscateCommand(
             configuration: configurationFile,
             output: outputFile
         )
