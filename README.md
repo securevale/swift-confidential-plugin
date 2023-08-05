@@ -47,7 +47,8 @@ To use the Swift Confidential plugin directly with your Xcode target:
 * Add `swift-confidential-plugin` package to your Xcode project. Please refer to the [official documentation](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app) for step-by-step instructions on how to add package dependencies.
 * Then, navigate to your target’s `Build Phases` pane, and in the `Run Build Tool Plug-ins` section, click the `+` button, select the `Confidential` plugin, and click the `Add` button.
 
-> **NOTE:** Due to the limitations of XcodeProjectPlugin API, the [`confidential.yml` configuration file](https://github.com/securevale/swift-confidential#configuration) must be located in the Xcode project's top-level directory, meaning that you cannot create distinct sets of secret literals for different Xcode targets. Hopefully, this behavior will be improved in the future.
+> [!IMPORTANT]  
+> Due to the limitations of XcodeProjectPlugin API, the [`confidential.yml` configuration file](https://github.com/securevale/swift-confidential#configuration) must be located in the Xcode project's top-level directory, meaning that you cannot create distinct sets of secret literals for different Xcode targets. Hopefully, this behavior will be improved in the future.
 
 ## Versioning
 
