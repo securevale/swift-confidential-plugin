@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Lint Swift Code
         run: swiftlint lint --strict --reporter github-actions-logging
@@ -41,14 +41,14 @@ jobs:
     name: Dependencies
     runs-on: macos-13
     env:
-      DEVELOPER_DIR: "/Applications/Xcode_14.3.1.app/Contents/Developer"
+      DEVELOPER_DIR: "/Applications/Xcode_15.1.app/Contents/Developer"
 
     steps:
       - name: Runner Overview
         run: system_profiler SPHardwareDataType SPSoftwareDataType SPDeveloperToolsDataType
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Resolve Package Dependencies
         run: swift package resolve -v
