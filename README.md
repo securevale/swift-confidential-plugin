@@ -1,7 +1,7 @@
 # Swift Confidential Plugin
 
 [![CI](https://github.com/securevale/swift-confidential-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/securevale/swift-confidential-plugin/actions/workflows/ci.yml)
-[![Swift](https://img.shields.io/badge/Swift-5.9%20%7C%205.8%20%7C%205.7-red)](https://www.swift.org/download)
+[![Swift](https://img.shields.io/badge/Swift-5.10%20%7C%205.9%20%7C%205.8%20%7C%205.7-red)](https://www.swift.org/download)
 
 A Swift Package Manager build tool plugin that supports obfuscating Swift literals embedded in libraries and executables.
 
