@@ -1,7 +1,7 @@
 # Swift Confidential Plugin
 
 [![CI](https://github.com/securevale/swift-confidential-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/securevale/swift-confidential-plugin/actions/workflows/ci.yml)
-[![Swift](https://img.shields.io/badge/Swift-5.10%20%7C%205.9%20%7C%205.8%20%7C%205.7-red)](https://www.swift.org/download)
+[![Swift](https://img.shields.io/badge/Swift-6.0%20%7C%205.10%20%7C%205.9-red)](https://www.swift.org/download)
 
 A Swift Package Manager build tool plugin that supports obfuscating Swift literals embedded in libraries and executables.
 
@@ -18,7 +18,7 @@ You can use this plugin with both SwiftPM and Xcode targets, depending on your n
 To use the Swift Confidential plugin with your SwiftPM target, add it to the package's dependencies and then to your target's plugins:
 
 ```swift
-// swift-tools-version: 5.7
+// swift-tools-version: 5.9
 
 import PackageDescription
 
@@ -26,7 +26,7 @@ let package = Package(
     // name, platforms, products, etc.
     dependencies: [
         // other dependencies
-        .package(url: "https://github.com/securevale/swift-confidential-plugin.git", .upToNextMinor(from: "0.3.0"))
+        .package(url: "https://github.com/securevale/swift-confidential-plugin.git", .upToNextMinor(from: "0.4.0"))
     ],
     targets: [
         .target(

@@ -28,9 +28,12 @@ concurrency:
 jobs:
   lint:
     name: Lint
-    runs-on: macos-13
+    runs-on: macos-14
 
     steps:
+      - name: Install SwiftLint
+        run: brew install swiftlint
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -41,7 +44,7 @@ jobs:
     name: Dependencies
     runs-on: macos-14
     env:
-      DEVELOPER_DIR: "/Applications/Xcode_15.4.app/Contents/Developer"
+      DEVELOPER_DIR: "/Applications/Xcode_16.2.app/Contents/Developer"
 
     steps:
       - name: Runner Overview
