@@ -35,7 +35,7 @@ jobs:
         run: brew install swiftlint
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Lint Swift Code
         run: swiftlint lint --strict --reporter github-actions-logging
@@ -51,7 +51,7 @@ jobs:
         run: system_profiler SPHardwareDataType SPSoftwareDataType SPDeveloperToolsDataType
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Resolve Package Dependencies
         run: swift package resolve -v
