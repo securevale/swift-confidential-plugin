@@ -16,8 +16,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "swift-confidential",
-            url: "https://github.com/securevale/swift-confidential/releases/download/0.4.1/SwiftConfidentialBinary-macos.artifactbundle.zip",
-            checksum: "c56ccc134146fca58cc432312812d369c874f1bfbc79e1caace5d791ce214038"
+            url: "https://github.com/securevale/swift-confidential/releases/download/0.4.2/SwiftConfidentialBinary-macos.artifactbundle.zip",
+            checksum: "f0d3e54db7b774934cfcafcdbbf86de68154679cd73ca13695c87c9182b13906"
         ),
         .plugin(
             name: "Confidential",
