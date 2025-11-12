@@ -44,7 +44,7 @@ jobs:
     name: Dependencies
     runs-on: macos-15
     env:
-      DEVELOPER_DIR: "/Applications/Xcode_16.4.app/Contents/Developer"
+      DEVELOPER_DIR: "/Applications/Xcode_26.1.app/Contents/Developer"
 
     steps:
       - name: Runner Overview
