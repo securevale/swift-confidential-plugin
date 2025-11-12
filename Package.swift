@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 
 import PackageDescription
 
@@ -16,8 +16,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "swift-confidential",
-            url: "https://github.com/securevale/swift-confidential/releases/download/0.4.2/SwiftConfidentialBinary-macos.artifactbundle.zip",
-            checksum: "f0d3e54db7b774934cfcafcdbbf86de68154679cd73ca13695c87c9182b13906"
+            url: "https://github.com/securevale/swift-confidential/releases/download/0.5.0/SwiftConfidentialBinary-macos.artifactbundle.zip",
+            checksum: "a955fa00b32f46cd47a43348bb17a1543fc248b43ccb218e3a3613bd1051757c"
         ),
         .plugin(
             name: "Confidential",
@@ -25,5 +25,5 @@ let package = Package(
             dependencies: ["swift-confidential"]
         )
     ],
-    swiftLanguageVersions: [.version("6"), .v5]
+    swiftLanguageModes: [.v5, .v6]
 )

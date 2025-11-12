@@ -1,13 +1,13 @@
 # Swift Confidential Plugin
 
 [![CI](https://github.com/securevale/swift-confidential-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/securevale/swift-confidential-plugin/actions/workflows/ci.yml)
-[![Swift](https://img.shields.io/badge/Swift-6.2%20%7C%206.1%20%7C%206.0%20%7C%205.10%20%7C%205.9-red)](https://www.swift.org/download)
+[![Swift](https://img.shields.io/badge/Swift-6.2%20%7C%206.1%20%7C%206.0-red)](https://www.swift.org/download)
 
 A Swift Package Manager build tool plugin that supports obfuscating Swift literals embedded in libraries and executables.
 
 ## Usage
 
-Please see the [Swift Confidential documentation](https://github.com/securevale/swift-confidential) for more detailed usage instructions.
+Please see the [Swift Confidential documentation](https://github.com/securevale/swift-confidential/#advanced-usage) for more detailed usage instructions.
 
 ### Adding the plugin as a dependency
 
@@ -18,7 +18,7 @@ You can use this plugin with both SwiftPM and Xcode targets, depending on your n
 To use the Swift Confidential plugin with your SwiftPM target, add it to the package's dependencies and then to your target's plugins:
 
 ```swift
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 
 import PackageDescription
 
@@ -26,7 +26,7 @@ let package = Package(
     // name, platforms, products, etc.
     dependencies: [
         // other dependencies
-        .package(url: "https://github.com/securevale/swift-confidential-plugin.git", .upToNextMinor(from: "0.4.0"))
+        .package(url: "https://github.com/securevale/swift-confidential-plugin.git", .upToNextMinor(from: "0.5.0"))
     ],
     targets: [
         .target(
@@ -52,7 +52,7 @@ To use the Swift Confidential plugin directly with your Xcode target:
 
 ## Versioning
 
-This project follows [semantic versioning](https://semver.org/). The plugin's releases are synced with [Swift Confidential](https://github.com/securevale/swift-confidential) releases.
+This project follows [semantic versioning](https://semver.org/). The plugin's releases are synced with [Swift Confidential releases](https://github.com/securevale/swift-confidential/releases).
 
 ## License
 
