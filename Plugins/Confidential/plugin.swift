@@ -20,15 +20,14 @@ struct Confidential: BuildToolPlugin {
         )
     }
 
-    private func locateConfigurationFile(in target: Target) -> Path? {
+    private func locateConfigurationFile(in target: Target) -> URL? {
         FileManager.default
-            .enumerateFiles(at: URL(directoryPath: target.directory.string))
-            .map { Path($0.path) }
-            .first { path in
-                guard path.stem == C.Configuration.expectedFileName else {
+            .enumerateFiles(at: URL(directoryPath: String(describing: target.directory)))
+            .first { url in
+                guard url.deletingPathExtension().lastPathComponent == C.Configuration.expectedFileName else {
                     return false
                 }
-                guard C.Configuration.expectedFileExtensions.contains(where: { $0 == path.extension }) else {
+                guard C.Configuration.expectedFileExtensions.contains(url.pathExtension) else {
                     return false
                 }
 
@@ -55,7 +54,7 @@ extension Confidential: XcodeBuildToolPlugin {
         )
     }
 
-    private func locateConfigurationFile(in project: XcodeProject) -> Path? {
+    private func locateConfigurationFile(in project: XcodeProject) -> URL? {
         /*
          A collection obtained from `project.targets.flatMap(\.dependencies)` call does not
          include targets defined in local Swift packages, thus we cannot reliably perform a
@@ -64,13 +63,13 @@ extension Confidential: XcodeBuildToolPlugin {
          */
         C.Configuration.expectedFileExtensions
             .map { fileExtension in
-                URL(directoryPath: project.directory.string)
+                project
+                    .directoryURL
                     .appending(fileName: C.Configuration.expectedFileName, with: fileExtension)
-                    .path
             }
-            .filter(FileManager.default.fileExists(atPath:))
-            .map(Path.init)
-            .first
+            .first {
+                FileManager.default.fileExists(atPath: $0.path())
+            }
     }
 }
 #endif
@@ -79,10 +78,10 @@ extension Confidential: XcodeBuildToolPlugin {
 
 private extension Confidential {
 
-    func createBuildCommands(context: Context, configurationFile: Path) throws -> [Command] {
+    func createBuildCommands(context: Context, configurationFile: URL) throws -> [Command] {
         let confidentialTool = try SwiftConfidentialTool.instance(for: context)
-        let outputDir = context.pluginWorkDirectory.appending(C.GeneratedSources.directoryName)
-        let outputFile = outputDir.appending(C.GeneratedSources.outputFileName)
+        let outputDir = context.pluginWorkDirectoryURL.appending(component: C.GeneratedSources.directoryName)
+        let outputFile = outputDir.appending(component: C.GeneratedSources.outputFileName)
         let obfuscateCommand = SwiftConfidentialTool.ObfuscateCommand(
             configuration: configurationFile,
             output: outputFile
@@ -91,7 +90,7 @@ private extension Confidential {
         return [
             .buildCommand(
                 displayName: "Obfuscate secret literals",
-                executable: confidentialTool.path,
+                executable: confidentialTool.url,
                 arguments: obfuscateCommand.cliArguments,
                 inputFiles: [
                     configurationFile

@@ -10,11 +10,7 @@ extension URL {
     }
 
     mutating func append(fileName: String, with fileExtension: String) {
-        if #available(macOS 13.0, *) {
-            append(component: fileName, directoryHint: .notDirectory)
-        } else {
-            appendPathComponent(fileName, isDirectory: false)
-        }
+        append(component: fileName, directoryHint: .notDirectory)
         appendPathExtension(fileExtension)
     }
 }

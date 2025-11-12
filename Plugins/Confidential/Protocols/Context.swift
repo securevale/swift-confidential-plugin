@@ -1,9 +1,10 @@
+import Foundation
 import PackagePlugin
 
 typealias ExecutableTool = PluginContext.Tool
 
 protocol Context {
-    var pluginWorkDirectory: Path { get }
+    var pluginWorkDirectoryURL: URL { get }
     func tool(named name: String) throws -> ExecutableTool
 }
 

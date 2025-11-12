@@ -1,21 +1,21 @@
-import PackagePlugin
+import Foundation
 
 extension SwiftConfidentialTool {
 
     struct ObfuscateCommand: Equatable {
 
-        var cliArguments: [CustomStringConvertible] {
+        var cliArguments: [String] {
             [
                 "obfuscate",
-                "--configuration", configuration.string,
-                "--output", output.string
+                "--configuration", configuration.path(),
+                "--output", output.path()
             ]
         }
 
-        private let configuration: Path
-        private let output: Path
+        private let configuration: URL
+        private let output: URL
 
-        init(configuration: Path, output: Path) {
+        init(configuration: URL, output: URL) {
             self.configuration = configuration
             self.output = output
         }

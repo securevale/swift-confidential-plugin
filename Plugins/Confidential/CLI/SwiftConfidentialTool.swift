@@ -1,5 +1,3 @@
-import PackagePlugin
-
 enum SwiftConfidentialTool {
 
     static func instance(for context: Context) throws -> ExecutableTool {
