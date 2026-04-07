@@ -86,6 +86,6 @@ nesting:
 
 ### Style ###
 opening_brace:
-  allow_multiline_func: true
+  ignore_multiline_function_signatures: true
 trailing_whitespace:
   ignores_empty_lines: true
