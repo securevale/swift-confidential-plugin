@@ -7,8 +7,8 @@ extension SwiftConfidentialTool {
         var cliArguments: [String] {
             [
                 "obfuscate",
-                "--configuration", configuration.path(),
-                "--output", output.path()
+                "--configuration", configuration.path(percentEncoded: false),
+                "--output", output.path(percentEncoded: false)
             ]
         }
 

@@ -68,7 +68,7 @@ extension Confidential: XcodeBuildToolPlugin {
                     .appending(fileName: C.Configuration.expectedFileName, with: fileExtension)
             }
             .first {
-                FileManager.default.fileExists(atPath: $0.path())
+                FileManager.default.fileExists(atPath: $0.path(percentEncoded: false))
             }
     }
 }
